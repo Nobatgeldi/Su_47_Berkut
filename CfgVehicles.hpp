@@ -211,9 +211,24 @@ class CfgVehicles
         //aileronCoef[]=	{   1, 1.5,   2, 2.5,   3,   3,   3,   3,   3,   3,   3,   3,   3,   2,   1,   1 };  //default value is 1
         //rudderCoef[] = {};   //default value is fabs(speed.Z())*InvSqrt(Square(speed.X())+Square(speed.Z()));
 
-		/*class MarkerLights
+		class MarkerLights
 		{
-			class back_lights
+			class Cockpit_light_1
+			{
+				name="pos driver";
+				ambient[]={0.0099999998,0.0099999998,0.0099999998,1};
+				color[]={0.029999999,1,0.11,1};
+				brightness=0.05;
+				blinking=0;
+				class Attenuation
+				{
+					start=1;
+					constant=0;
+					linear=0;
+					quadratic=4;
+				};
+			};
+			/*class back_lights
 			{
 				name="back_lights";
 				color[]={0.0, 0.9, 1.0, 0.0};
@@ -236,61 +251,34 @@ class CfgVehicles
 				ambient[]={0.0, 0.0, 0.0, 0.0};
 				brightness=0.05;
 				blinking=false;
-			};
-		};*/
+			};*/
+		};
 		class Reflectors
 		{
-		    class Cockpit
-        	{
-                color[]={1,1,1,0};
-                ambient[]={1,1,1,0};
-                size = 1;
-                dayLight = 1;
-                useFlare = 1;
-                intensity = 25;
-                coneFadeCoef = 10;
-                innerAngle = 40;
-                outerAngle = 50;
-                position = "gear_light";
-                direction = "gear_light_dir";
-                hitpoint = "";
-                selection = "";
-
-                class Attenuation {//https://community.bistudio.com/wiki/setLightAttenuation
-                    start = 1;
-                    constant = 0;
-                    linear = 0;
-                    quadratic = 4;
-                    hardLimitStart = 9;
-                    hardLimitEnd = 10;
-                };
-            };
-			//new
-			class Light_1
-			{
-				color[]={7000,7500,10000,1};
-				ambient[]={100,100,100,0};
-				size = 1;
-				dayLight = 1;
-				useFlare = 1;
-				intensity = 25;
-				coneFadeCoef = 10;
-				innerAngle = 40;
-				outerAngle = 50;
-				position = "gear_light";
-				direction = "gear_light_dir";
-				hitpoint = "";
-				selection = "";
-
-				class Attenuation {//https://community.bistudio.com/wiki/setLightAttenuation
-					start = 1;
-					constant = 0;
-					linear = 0;
-					quadratic = 4;
-					hardLimitStart = 9;
-					hardLimitEnd = 10;
-				};
-			};
+			class Left
+ 			{
+ 				color[]={7000,7500,10000,1};
+ 				ambient[]={100,100,100,0};
+ 				position="gear_light";
+ 				direction="gear_light_dir";
+ 				hitpoint="L svetlo";
+ 				selection="L svetlo";
+ 				size=1;
+ 				innerAngle=20;
+ 				outerAngle=60;
+ 				coneFadeCoef=10;
+ 				intensity=50;
+ 				useFlare=1;
+ 				dayLight=0;
+ 				FlareSize=4;
+ 				class Attenuation
+ 				{
+ 					start=1;
+ 					constant=0;
+ 					linear=0;
+ 					quadratic=4;
+ 				};
+ 			};
 		};
 		class Exhausts
 		{
@@ -410,6 +398,45 @@ class CfgVehicles
 				volume = "(1-camPos) * rain * (speed factor[50, 0])";
 			};
 		};
+		/*class RenderTargets
+		{
+			class Center_Pilot_Mirror
+			{
+				renderTarget="rendertarget0";
+				class CameraView1
+				{
+					pointPosition="PIP_mirror_c";
+					pointDirection="PIP_mirror_c_dir";
+					renderQuality=2;
+					renderVisionMode=0;
+					fov=0.69999999;
+				};
+			};
+			class Left_Pilot_Mirror
+			{
+				renderTarget="rendertarget1";
+				class CameraView1
+				{
+					pointPosition="PIP_mirror_l";
+					pointDirection="PIP_mirror_l_dir";
+					renderQuality=2;
+					renderVisionMode=0;
+					fov=0.69999999;
+				};
+			};
+			class Right_Pilot_Mirror
+			{
+				renderTarget="rendertarget2";
+				class CameraView1
+				{
+					pointPosition="PIP_mirror_r";
+					pointDirection="PIP_mirror_r_dir";
+					renderQuality=2;
+					renderVisionMode=0;
+					fov=0.69999999;
+				};
+			};
+		};*/
 		attenuationEffectType = "PlaneAttenuation";
 		soundGetIn[] = {"A3\Sounds_F_EPC\CAS_02\TO_getin", 1.0, 1};
 		soundGetOut[] = {"A3\Sounds_F_EPC\CAS_02\getout", 1.0, 1, 40};
@@ -571,7 +598,7 @@ class CfgVehicles
         };
 		class Eventhandlers: Eventhandlers
 		{
-			init   = "[_this select 0] execVM ""\Su_47_Berkut\sqf\init.sqf"",[_this ] execVM ""\Su_47_Berkut\sqf\cockpit_light.sqf"",";
+			init   = "[_this select 0] execVM ""\Su_47_Berkut\sqf\init.sqf"",";
 			fired  = "[_this] execVM ""\Su_47_Berkut\sqf\fire.sqf"",";
 			gear   = "[_this] execVM ""\Su_47_Berkut\sqf\gear_lcd.sqf"",";
 			engine = "[_this] execVM ""\Su_47_Berkut\sqf\engine.sqf"",";
