@@ -81,6 +81,16 @@ class CfgWeapons
 			"Su47_R73M1"
 		};
 	};
+	class Su47_R60Launcher: Su47_R73Launcher
+	{
+		displayName="R-60 Archer";
+		displayNameMagazine="R-60 Archer";
+		shortNameMagazine="R-60 Archer";
+		magazines[]=
+		{
+			"Su47_R60"
+		};
+	};
 	class Su47_fake_weapon: FakeWeapon
 	{
 		displayName="Safe mod";

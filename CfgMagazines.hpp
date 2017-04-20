@@ -44,4 +44,12 @@ class CfgMagazines
 		ammoIsProxy = true;
 		count=1;
 	};
+	class Su47_R60: Su47_R73
+	{
+		ammo="Su47_R60_AA";
+		displayName="R-60";
+		displayNameShort="R-60";
+		ammoIsProxy = true;
+		count=1;
+	};
 };

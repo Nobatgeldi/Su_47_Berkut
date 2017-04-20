@@ -74,4 +74,14 @@ class CfgAmmo
 		indirectHitRange=20;
 		maneuvrability=35;
 	};
+	class Su47_R60_AA: Su47_R73_AA
+	{
+		model="\Su_47_Berkut\wep\R_60.p3d";
+		proxyShape="\Su_47_Berkut\wep\R_60.p3d";
+		hit=350;
+		indirectHit=100;
+		initTime=0.8;
+		indirectHitRange=20;
+		maneuvrability=35;
+	};
 };

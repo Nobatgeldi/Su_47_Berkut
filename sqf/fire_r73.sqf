@@ -28,21 +28,21 @@ if(isEngineOn _plane) then
            _plane animateSource  ["R_73_m1",1];
            _plane animateSource  ["R_73_m2",1];
            _plane animateSource  ["R_73_m3",1];
-           _plane animateSource  ["R_73_m4",0];
+           //_plane animateSource  ["R_73_m4",0];
         };
         case 2:
         {
            _plane animateSource  ["R_73_m1",1];
            _plane animateSource  ["R_73_m2",1];
-           _plane animateSource  ["R_73_m3",0];
-           _plane animateSource  ["R_73_m4",0];
+           /*_plane animateSource  ["R_73_m3",0];
+           _plane animateSource  ["R_73_m4",0];*/
         };
         case 3:
         {
            _plane animateSource  ["R_73_m1",1];
-           _plane animateSource  ["R_73_m2",0];
+           /*_plane animateSource  ["R_73_m2",0];
            _plane animateSource  ["R_73_m3",0];
-           _plane animateSource  ["R_73_m4",0];
+           _plane animateSource  ["R_73_m4",0];*/
         };
         case 4:
         {

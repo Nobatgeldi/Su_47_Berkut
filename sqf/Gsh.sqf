@@ -1,5 +1,6 @@
 // -----------------------------
 // configured for mig-29 by Gabby_NG
+// configured for Su-47 by Gabby_NG
 // -----------------------------
 private ["_plane","_gunmodelpos","_vel","_gsh_301","_magazine_count","_ammo_count","_animation_count"];
 

@@ -4,6 +4,7 @@
 #include "CfgWeapons.hpp"
 #include "CfgAmmo.hpp"
 #include "CfgMagazines.hpp"
+#include "CfgNonAIVehicles.hpp"
 
 class CfgPatches
 {

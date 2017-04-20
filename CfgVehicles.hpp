@@ -481,47 +481,53 @@ class CfgVehicles
 				animPeriod=0.0099999998;
 			};
 		  class LCD_control
-		    {
-		        source = "user";
-		        initPhase = 1;
-		        animPeriod = 1;
-		    };
+		  {
+		    source = "user";
+		    initPhase = 1;
+		    animPeriod = 1;
+		  };
 			class R_73_m1
-		    {
-		        source = "user";
-		        initPhase = 1;
-		        animPeriod = 1;
-		    };
+		  {
+		    source = "user";
+		    initPhase = 1;
+		    animPeriod = 1;
+		  };
 			class R_73_m2
-		    {
-		        source = "user";
-		        initPhase = 1;
-		        animPeriod = 1;
-		    };
+		  {
+		     source = "user";
+		     initPhase = 1;
+		     animPeriod = 1;
+		  };
 			class R_73_m3
-		    {
-		        source = "user";
-		        initPhase = 1;
-		        animPeriod = 1;
-		    };
+		  {
+		     source = "user";
+		     initPhase = 1;
+		     animPeriod = 1;
+		  };
 			class R_73_m4
-		    {
-		        source = "user";
-		        initPhase = 1;
-		        animPeriod = 1;
-		    };
-		    class missile
-            {
-            	source="user";
-            	initPhase=1;
-            	animPeriod=2;
-            };
-            class safe_mod
-            {
-                source="user";
-                initPhase=1;
-                animPeriod=0.0099999998;
-            };
+		  {
+		    source = "user";
+		    initPhase = 1;
+		    animPeriod = 1;
+		  };
+		  class missile
+      {
+        source="user";
+        initPhase=1;
+        animPeriod=2;
+      };
+			class missile_F
+			{
+					source="user";
+					initPhase=1;
+					animPeriod=2;
+			};
+      class safe_mod
+      {
+        source="user";
+        initPhase=1;
+        animPeriod=0.0099999998;
+      };
 		};
 		class UserActions
 		{
@@ -4035,5 +4041,33 @@ class CfgVehicles
 					};
 				};
 			};
+	};
+	class Su_47_Berkut_PRT: Su_47_Berkut
+	{
+		displayName="Sukhoi Su-47 Berkut";
+		model="\Su_47_Berkut\Su_47_Berkut_PRT.p3d";
+		author="Nobatgeldi Geldimammedov";
+		weapons[]=
+		{
+            "Mig_GSh301",
+
+						"Su47_R73M1Launcher",
+
+						"Su47_R60Launcher",
+
+            "CMFlareLauncher"
+		};
+		magazines[]=
+		{
+            "Mig_150Rnd_30mm_GSh301",
+
+						"Su47_R73M1",
+            "Su47_R73M1",
+
+						"Su47_R60",
+            "Su47_R60",
+
+            "300Rnd_CMFlare_Chaff_Magazine"
+		};
 	};
 };

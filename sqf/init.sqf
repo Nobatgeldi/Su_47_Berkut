@@ -16,7 +16,7 @@ while {(alive _plane)} do
 {
     if(isEngineOn _plane) then
     {
-        if (currentWeapon _plane == "Su47_R73M1Launcher" and "Su47_R73M1" in (magazines _plane)) then
+        if (currentWeapon _plane == "Su47_R73M1Launcher") then
         {
                 _plane animateSource  ["missile",0];
                 _plane setObjectTexture [0, "\Su_47_Berkut\tex\LCD\fire_s.paa"];
@@ -31,6 +31,14 @@ while {(alive _plane)} do
                 _plane setObjectTexture [1, "\Su_47_Berkut\tex\LCD\fire.paa"];
                 _plane setObjectTexture [2, "\Su_47_Berkut\tex\LCD\fire.paa"];
                 _plane setObjectTexture [3, "\Su_47_Berkut\tex\LCD\fire.paa"];
+        };
+				if (currentWeapon _plane == "Su47_R60Launcher") then
+        {
+                _plane animateSource  ["missile_F",0];
+        }
+        else
+        {
+                _plane animateSource  ["missile_F",1];
         };
     };
 
