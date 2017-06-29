@@ -16,6 +16,6 @@ class CfgPatches
 		};
 		weapons[] = {};
 		requiredVersion = 0.0.1;
-		requiredAddons[] = {};
+		requiredAddons[] = {"Su33_Protatype_PT"};
 	};
 };

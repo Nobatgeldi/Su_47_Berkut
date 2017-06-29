@@ -68,7 +68,7 @@ class Stage5
 };
 class Stage6
 {
-	texture="Mikoyan-Mig-29\tex\env_land_co.paa";
+	texture="Su_47_Berkut\tex\env_land_co.paa";
 	uvSource="tex";
 	class uvTransform
 	{

@@ -5,9 +5,9 @@
 */
 private ["_plane","_r73_ammo_count","_magazine_count","_count_help"];
 
-_plane = _this select 0;
+_plane = _this;
 
-if ("Mig_150Rnd_30mm_GSh301" in (magazines _plane)) then
+if ("Su_300Rnd_30mm_GSh301" in (magazines _plane)) then
 {
  _count_help = 2;
 }

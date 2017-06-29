@@ -1,6 +1,6 @@
 class CfgVehicles
 {
-	  class All{};
+	    class All{};
 		class O_Pilot_F;
 		class AllVehicles: All{};
 		class Air: AllVehicles{};
@@ -12,7 +12,24 @@ class CfgVehicles
 			class AnimationSources;
 			class Eventhandlers;
 		};
-	class Su_47_Berkut: Plane
+		class Su33_Base_F : Plane
+		{
+            class AnimationSources;	// External class reference
+
+            /*class HitPoints : HitPoints {
+                class HitHull;	// External class reference
+            };*/
+            class Components;	// External class reference
+        };
+        class Su33_Protatype_PT_2: Su33_Base_F
+        {
+            class Sounds;
+            class AnimationSources;
+            class Components;
+            class Eventhandlers;
+        };
+
+	class Su_47_Berkut: Su33_Protatype_PT_2
 	{
 		side = 0;
 		faction = "OPF_F";
@@ -20,13 +37,13 @@ class CfgVehicles
 		author="Nobatgeldi Geldimammedov";
 		displayName="Sukhoi Su-47 Berkut";
 		model="\Su_47_Berkut\Su_47_Berkut.p3d";
-		driverAction="su47_pilot";
+		driverAction="su_33_pilot";
 		driverCanSee = 1+2+4+8+16;
 		getInAction = "";
 		animated=1;
 		vehicleClass="Air";
-		icon="\Mikoyan-Mig-29\tex\icon.paa";
-		picture="\Mikoyan-Mig-29\tex\pic.paa";
+		icon="\Su_47_Berkut\tex\lcd\plane.paa";
+		picture="\Su_47_Berkut\tex\pic.paa";
 		unitInfoType="RscOptics_CAS_Pilot";
 		driverWeaponsInfoType = "RscOptics_CAS_01_TGP";
 		simulation="airplane";
@@ -35,7 +52,7 @@ class CfgVehicles
 		accuracy = 3.500000;
 		nameSound="aircraft";
 		fuelCapacity=1500;
-		maxSpeed = 2500;
+		maxSpeed = 2300;
 		camouflage=5;
 		lightOnGear = true;
 		Audible=9;
@@ -47,7 +64,7 @@ class CfgVehicles
 		armor=80;
 		damageResistance=0.00336;
 		armorStructured=1;
-		incomingMissileDetectionSystem=16;
+		incomingMissileDetectionSystem=8+16;
 		radarType=4;
 		// Vehicle/turret setting. Displays all targets known to vehicle sensors in via the ingame UI. Values can be combined.
 		showAllTargets = 2; //LockYes, show targets from all sensors
@@ -62,10 +79,10 @@ class CfgVehicles
 		irScanGround=1;
 		nvTarget = 1;
 		nvScanner = 1;
-		LockDetectionSystem="1 + 2 + 4 + 8";
+		LockDetectionSystem=1 + 2 + 4 + 8 + 16;
 		landingAoa="rad 10";
 		sweepDisengageRandomCourseCoef = 1;
-		landingSpeed=180;
+		landingSpeed=250;
 		enableGPS = 1;
 		fuelLeakiness = 20;
 		extCameraPosition[] = {0, 2, -30};
@@ -74,7 +91,7 @@ class CfgVehicles
 		commanderUsesPilotView=true;
 		flapsFrictionCoef=0.2;
 		forceThrustMultiple = 2.0;
-		flyInHeight=200;
+		flyInHeight=500;
 		supplyRadius=13;
 		airBrake = true;
 		maxRotationX=10.5;
@@ -105,7 +122,9 @@ class CfgVehicles
 
 		weapons[]=
 		{
-            "Mig_GSh301",
+		    "Su_fake_weapon",
+
+            "Su_GSh301",
 
             "Su47_R73M1Launcher",
 
@@ -113,7 +132,7 @@ class CfgVehicles
 		};
 		magazines[]=
 		{
-            "Mig_150Rnd_30mm_GSh301",
+            "Su_300Rnd_30mm_GSh301",
 
             "Su47_R73M1",
             "Su47_R73M1",
@@ -210,7 +229,6 @@ class CfgVehicles
         //elevatorCoef[]= { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 }; //default value is 1
         //aileronCoef[]=	{   1, 1.5,   2, 2.5,   3,   3,   3,   3,   3,   3,   3,   3,   3,   2,   1,   1 };  //default value is 1
         //rudderCoef[] = {};   //default value is fabs(speed.Z())*InvSqrt(Square(speed.X())+Square(speed.Z()));
-
 		class MarkerLights
 		{
 			class Cockpit_light_1
@@ -296,108 +314,108 @@ class CfgVehicles
 			};
 		};
 		class Sounds
-		{
-			class EngineLowOut
-			{
-				sound[]=
-				{
-					"Mikoyan-Mig-29\sounds\ext-jetair-engine-low1",
-					2.5118899,
-					1,
-					1600
-				};
-				frequency = "1.0 min (rpm + 0.5)";
-				volume = "camPos*2*(rpm factor[0.95, 0])*(rpm factor[0, 0.95])";
-			};
-			class EngineHighOut
-			{
-				sound[]=
-				{
-					"Mikoyan-Mig-29\sounds\ext-jetair-engine-high3",
-					2.5118899,
-					1.3,
-					1800
-				};
-				frequency = "1";
-				volume = "camPos*4*(rpm factor[0.5, 1.1])*(rpm factor[1.1, 0.5])";
-			};
-			class ForsageOut
-			{
-				sound[]=
-				{
-					"Mikoyan-Mig-29\sounds\ext-jetair-forsage1",
-					2.5118899,
-					1.1,
-					2000
-				};
-				frequency = "1";
-				volume = "engineOn*camPos*(thrust factor[0.6, 1.0])";
-				cone[] = {3.14, 3.92, 2.0, 0.5};
-			};
-			class WindNoiseOut
-			{
-				sound[] = {"A3\Sounds_F_EPC\CAS_02\noise", 0.562341, 1.0, 150};
-				frequency = "(0.1+(1.2*(speed factor[1, 150])))";
-				volume = "camPos*(speed factor[1, 150])";
-			};
-			class EngineLowIn
-			{
-				sound[]=
-				{
-					"Mikoyan-Mig-29\sounds\int-av8b-engine-low",
-					0.56234097,
-					1
-				};
-				frequency = "1.0 min (rpm + 0.5)";
-				volume = "(1-camPos)*((rpm factor[0.7, 0.1])*(rpm factor[0.1, 0.7]))";
-			};
-			class EngineHighIn
-			{
-				sound[]=
-				{
-					"Mikoyan-Mig-29\sounds\int-av8b-engine",
-					1,
-					1
-				};
-				frequency = "1";
-				volume = "(1-camPos)*(rpm factor[0.85, 1.0])";
-			};
-			class ForsageIn
-			{
-				sound[]=
-				{
-					"Mikoyan-Mig-29\sounds\int-av8b-forsage-1",
-					0.56234097,
-					1.1
-				};
-				frequency = "1";
-				volume = "(1-camPos)*(engineOn*(thrust factor[0.6, 1.0]))";
-			};
-			class WindNoiseIn
-			{
-				sound[]=
-				{
-					"A3\Sounds_F\air\Plane_Fighter_03\noise",
-					0.70794576,
-					1
-				};
-				frequency = "(0.1+(1.2*(speed factor[1, 150])))";
-				volume = "(1-camPos)*(speed factor[1, 150])";
-			};
-			class RainExt
-			{
-				sound[] = {"A3\Sounds_F\vehicles\noises\rain1_ext", 1.77828, 1.0, 100};
-				frequency = 1;
-				volume = "camPos * rain * (speed factor[50, 0])";
-			};
+        {
+            class EngineLowOut
+            {
+                sound[]=
+                {
+                    "SU_33_Flanker_D\sounds\ext-jetair-engine-low1",
+                    2.5118899,
+                    1,
+                    1600
+                };
+                frequency = "1.0 min (rpm + 0.5)";
+                volume = "camPos*2*(rpm factor[0.95, 0])*(rpm factor[0, 0.95])";
+            };
+            class EngineHighOut
+            {
+                sound[]=
+                {
+                    "SU_33_Flanker_D\sounds\ext-jetair-engine-high3",
+                    2.5118899,
+                    1.3,
+                    1800
+                };
+                frequency = "1";
+                volume = "camPos*4*(rpm factor[0.5, 1.1])*(rpm factor[1.1, 0.5])";
+            };
+            class ForsageOut
+            {
+                sound[]=
+                {
+                    "SU_33_Flanker_D\sounds\ext-jetair-forsage1",
+                    2.5118899,
+                    1.1,
+                    2000
+                };
+                frequency = "1";
+                volume = "engineOn*camPos*(thrust factor[0.6, 1.0])";
+                cone[] = {3.14, 3.92, 2.0, 0.5};
+            };
+            class WindNoiseOut
+            {
+                sound[] = {"A3\Sounds_F_EPC\CAS_02\noise", 0.562341, 1.0, 150};
+                frequency = "(0.1+(1.2*(speed factor[1, 150])))";
+                volume = "camPos*(speed factor[1, 150])";
+            };
+            class EngineLowIn
+            {
+                sound[]=
+                {
+                    "SU_33_Flanker_D\sounds\int-av8b-engine-low",
+                    0.56234097,
+                    1
+                };
+                frequency = "1.0 min (rpm + 0.5)";
+                volume = "(1-camPos)*((rpm factor[0.7, 0.1])*(rpm factor[0.1, 0.7]))";
+            };
+            class EngineHighIn
+            {
+                sound[]=
+                {
+                    "SU_33_Flanker_D\sounds\int-av8b-engine",
+                    1,
+                    1
+                };
+                frequency = "1";
+                volume = "(1-camPos)*(rpm factor[0.85, 1.0])";
+            };
+            class ForsageIn
+            {
+                sound[]=
+                {
+                    "SU_33_Flanker_D\sounds\int-av8b-forsage-1",
+                    0.56234097,
+                    1.1
+                };
+                frequency = "1";
+                volume = "(1-camPos)*(engineOn*(thrust factor[0.6, 1.0]))";
+            };
+            class WindNoiseIn
+            {
+                sound[]=
+                {
+                    "A3\Sounds_F\air\Plane_Fighter_03\noise",
+                    0.70794576,
+                    1
+                };
+                frequency = "(0.1+(1.2*(speed factor[1, 150])))";
+                volume = "(1-camPos)*(speed factor[1, 150])";
+            };
+            class RainExt
+            {
+                sound[] = {"A3\Sounds_F\vehicles\noises\rain1_ext", 1.77828, 1.0, 100};
+                frequency = 1;
+                volume = "camPos * rain * (speed factor[50, 0])";
+            };
 
-			class RainInt
-			{
-				sound[] = {"A3\Sounds_F\vehicles\noises\rain1_int", 1.0, 1.0, 100};
-				frequency = 1;
-				volume = "(1-camPos) * rain * (speed factor[50, 0])";
-			};
-		};
+            class RainInt
+            {
+                sound[] = {"A3\Sounds_F\vehicles\noises\rain1_int", 1.0, 1.0, 100};
+                frequency = 1;
+                volume = "(1-camPos) * rain * (speed factor[50, 0])";
+            };
+        };
 		/*class RenderTargets
 		{
 			class Center_Pilot_Mirror
@@ -604,8 +622,8 @@ class CfgVehicles
         };
 		class Eventhandlers: Eventhandlers
 		{
-			init   = "[_this select 0] execVM ""\Su_47_Berkut\sqf\init.sqf"",";
-			fired  = "[_this] execVM ""\Su_47_Berkut\sqf\fire.sqf"",";
+			init   = "_this execVM ""\Su_47_Berkut\sqf\init.sqf""";
+			fired  = "_this execVM ""\Su_47_Berkut\sqf\fire.sqf""";
 			gear   = "[_this] execVM ""\Su_47_Berkut\sqf\gear_lcd.sqf"",";
 			engine = "[_this] execVM ""\Su_47_Berkut\sqf\engine.sqf"",";
 		};
@@ -4049,22 +4067,24 @@ class CfgVehicles
 		author="Nobatgeldi Geldimammedov";
 		weapons[]=
 		{
-            "Mig_GSh301",
+		    "Su_fake_weapon",
 
-						"Su47_R73M1Launcher",
+            "Su_GSh301",
 
-						"Su47_R60Launcher",
+			"Su47_R73M1Launcher",
+
+			"Su47_R60Launcher",
 
             "CMFlareLauncher"
 		};
 		magazines[]=
 		{
-            "Mig_150Rnd_30mm_GSh301",
+            "Su_300Rnd_30mm_GSh301",
 
-						"Su47_R73M1",
+			"Su47_R73M1",
             "Su47_R73M1",
 
-						"Su47_R60",
+			"Su47_R60",
             "Su47_R60",
 
             "300Rnd_CMFlare_Chaff_Magazine"

@@ -4,16 +4,16 @@
 // -----------------------------
 private ["_plane","_gunmodelpos","_vel","_gsh_301","_magazine_count","_ammo_count","_animation_count"];
 
-_plane = _this select 0;
+_plane = _this;
 //_ammoname = _array select 4;
 //_plane2 = _plane select 0;
 
 //main
 
     _magazine_count = magazinesAmmo _plane;
-    _gsh_301 = _magazine_count select 0;
-    _ammo_count = _gsh_301 select 1;
-    _animation_count = 150-_ammo_count;
+    _gsh_301 = _magazine_count select 0; // array ["Su_300Rnd_30mm_GSh301",150],
+    _ammo_count = _gsh_301 select 1; // count 300
+    _animation_count = 300-_ammo_count;
     _plane animateSource  ["gsh_301_count",_animation_count];
 
 	_gunmodelpos = _plane selectionPosition  "machine_gun";

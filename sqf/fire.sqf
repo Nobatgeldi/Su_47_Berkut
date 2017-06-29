@@ -7,7 +7,7 @@
 private ["_plane","_weapon","_script"];
 
 _plane  = _this select 0;
-_weapon = _plane select 1;
+_weapon = _this select 1;
 _script = [];
 
 if(_weapon == "Su47_R73M1Launcher") then
