@@ -4,14 +4,15 @@
 	returns: nothing
 */
 
-private ["_plane","_script1"];
+private ["_plane","_scripts"];
 
 _plane = _this select 0;
 
 _plane setObjectTexture [5, "Su_47_Berkut\tex\lcd\plane_gear.paa"];
-_script1 = [];
+_scripts = [];
 
-	_script1 set [0, _plane execVM "\Su_47_Berkut\sqf\FX_Afterburner.sqf"];
+	_scripts set [0, _plane execVM "\Su_47_Berkut\sqf\FX_Afterburner.sqf"];
+	_scripts set [1, _plane execVM "\Su_47_Berkut\sqf\axis.sqf"];
 //_r73_ammo_count = count _magazines_select;
 
 while {(alive _plane)} do
